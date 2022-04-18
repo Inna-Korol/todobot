@@ -1,7 +1,7 @@
 import telebot
 import random
 
-token = "5114504230:AAGrbS9RI03XEhhCGunkKoBh3uZRnIl8PUc"
+token = "get from telegram"
 
 bot = telebot.TeleBot(token)
 
