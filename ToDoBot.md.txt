@@ -1,18 +1,18 @@
 import telebot
 import random
 
-token = "5114504230:AAGrbS9RI03XEhhCGunkKoBh3uZRnIl8PUc"
+token = "token"
 
 bot = telebot.TeleBot(token)
 
 HELP = """""
-/help - напечатать справку по программе
-/add - добавить задачу в список (название задачи запрвшиваем у пользователя).
-/show - напечатать все добавленные задачи.
-/random - добавить случайно задачу на дату Сегодня"""
+/help - Г­Г ГЇГҐГ·Г ГІГ ГІГј Г±ГЇГ°Г ГўГЄГі ГЇГ® ГЇГ°Г®ГЈГ°Г Г¬Г¬ГҐ
+/add - Г¤Г®ГЎГ ГўГЁГІГј Г§Г Г¤Г Г·Гі Гў Г±ГЇГЁГ±Г®ГЄ (Г­Г Г§ГўГ Г­ГЁГҐ Г§Г Г¤Г Г·ГЁ Г§Г ГЇГ°ГўГёГЁГўГ ГҐГ¬ Гі ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«Гї).
+/show - Г­Г ГЇГҐГ·Г ГІГ ГІГј ГўГ±ГҐ Г¤Г®ГЎГ ГўГ«ГҐГ­Г­Г»ГҐ Г§Г Г¤Г Г·ГЁ.
+/random - Г¤Г®ГЎГ ГўГЁГІГј Г±Г«ГіГ·Г Г©Г­Г® Г§Г Г¤Г Г·Гі Г­Г  Г¤Г ГІГі Г‘ГҐГЈГ®Г¤Г­Гї"""
 
 
-RANDOM_TASKS = "Записаться на курс в Нетологию", "Написать письмо", "Помыть машину", "Покормить кошку"
+RANDOM_TASKS = "Г‡Г ГЇГЁГ±Г ГІГјГ±Гї Г­Г  ГЄГіГ°Г± Гў ГЌГҐГІГ®Г«Г®ГЈГЁГѕ", "ГЌГ ГЇГЁГ±Г ГІГј ГЇГЁГ±ГјГ¬Г®", "ГЏГ®Г¬Г»ГІГј Г¬Г ГёГЁГ­Гі", "ГЏГ®ГЄГ®Г°Г¬ГЁГІГј ГЄГ®ГёГЄГі"
 
 tasks  = {}
 
@@ -35,15 +35,15 @@ def add(message):
     date = command[1].lower()
     task = command[2]
     add_todo(date, task)
-    text = "Задача " + task + " Добавлена на дату " + date
+    text = "Г‡Г Г¤Г Г·Г  " + task + " Г„Г®ГЎГ ГўГ«ГҐГ­Г  Г­Г  Г¤Г ГІГі " + date
     bot.send_message(message.chat.id, text)
 
 @bot.message_handler(commands=["random"])
 def random_add(message):
-    date = "сегодня"
+    date = "Г±ГҐГЈГ®Г¤Г­Гї"
     task = random.choice(RANDOM_TASKS)
     add_todo(date, task)
-    text = "Задача " + task + " Добавлена на дату " + date
+    text = "Г‡Г Г¤Г Г·Г  " + task + " Г„Г®ГЎГ ГўГ«ГҐГ­Г  Г­Г  Г¤Г ГІГі " + date
     bot.send_message(message.chat.id, text)
 
 @bot.message_handler(commands=["show", "print"])
@@ -56,7 +56,7 @@ def show(message):
         for task in tasks[date]:
             text = text + "[] " + task + "\n"
     else:
-        text = "Задач на эту дату нет"
+        text = "Г‡Г Г¤Г Г· Г­Г  ГЅГІГі Г¤Г ГІГі Г­ГҐГІ"
     bot.send_message(message.chat.id, text)
 
 bot.polling(none_stop=True)
